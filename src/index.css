@@ -171,3 +171,37 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Custom color utilities */
+.bg-cyber-dark {
+  background-color: #0a0a0f;
+}
+
+.bg-cyber-card {
+  background-color: rgba(26, 26, 46, 0.6);
+}
+
+.text-neon-purple {
+  color: #9d4edd;
+}
+
+.text-neon-blue {
+  color: #0ea5e9;
+}
+
+.bg-neon-purple {
+  background-color: #9d4edd;
+}
+
+.bg-neon-blue {
+  background-color: #0ea5e9;
+}
+
+.border-neon-purple {
+  border-color: #9d4edd;
+}
+
+.border-neon-blue {
+  border-color: #0ea5e9;
+}
+

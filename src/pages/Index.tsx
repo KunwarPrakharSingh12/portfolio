@@ -6,6 +6,8 @@ import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
 import ProjectsSection from '../components/ProjectsSection';
+import CertificatesSection from '../components/CertificatesSection';
+import ContactSection from '../components/ContactSection';
 
 const Preloader = () => {
   return (
@@ -68,44 +70,8 @@ const Index = () => {
               <HeroSection />
               <AboutSection />
               <ProjectsSection />
-              
-              {/* Certificates Section Placeholder */}
-              <section id="certificates" className="py-20 px-6">
-                <div className="max-w-7xl mx-auto text-center">
-                  <h2 className="text-4xl md:text-6xl font-bold mb-6">
-                    <span className="neon-text text-neon-purple">Certificates</span>{' '}
-                    <span className="text-white">& Awards</span>
-                  </h2>
-                  <p className="text-xl text-gray-400 mb-12">
-                    Professional certifications and achievements in web development
-                  </p>
-                  <div className="cyber-card p-12">
-                    <div className="text-6xl mb-4">🏆</div>
-                    <p className="text-gray-400">
-                      Certificates section coming soon with 3D gallery view
-                    </p>
-                  </div>
-                </div>
-              </section>
-
-              {/* Contact Section Placeholder */}
-              <section id="contact" className="py-20 px-6">
-                <div className="max-w-7xl mx-auto text-center">
-                  <h2 className="text-4xl md:text-6xl font-bold mb-6">
-                    <span className="text-white">Get In</span>{' '}
-                    <span className="neon-text text-neon-purple">Touch</span>
-                  </h2>
-                  <p className="text-xl text-gray-400 mb-12">
-                    Let's create something amazing together
-                  </p>
-                  <div className="cyber-card p-12">
-                    <div className="text-6xl mb-4">📧</div>
-                    <p className="text-gray-400">
-                      Contact form with neon effects coming soon
-                    </p>
-                  </div>
-                </div>
-              </section>
+              <CertificatesSection />
+              <ContactSection />
             </main>
 
             {/* Footer */}

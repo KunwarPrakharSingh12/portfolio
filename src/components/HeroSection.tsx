@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
+import { toast } from 'sonner';
 
 const FloatingAvatar = () => {
   const groupRef = useRef<THREE.Group>(null);
@@ -81,6 +82,36 @@ const HeroSection = () => {
     },
   };
 
+  const handleViewPortfolio = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    toast.success("Viewing my latest projects below!", {
+      style: {
+        background: '#1a1a2e',
+        border: '1px solid #9d4edd',
+        color: '#ffffff'
+      }
+    });
+  };
+
+  const handleDownloadResume = () => {
+    // Create a dummy PDF download
+    const link = document.createElement('a');
+    link.href = 'data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVGl0bGUgKEpvaG4gRG9lIC0gRnVsbC1TdGFjayBERVYgUmVzdW1lKQovQ3JlYXRvciAoTG92YWJsZSBQb3J0Zm9saW8pCi9Qcm9kdWNlciAoTG92YWJsZSBQb3J0Zm9saW8pCi9DcmVhdGlvbkRhdGUgKEQ6MjAyNDA2MDQwMDAwMDBaKQo+PgplbmRvYmoKCjIgMCBvYmoKPDwKL1R5cGUgL0NhdGFsb2cKL1BhZ2VzIDMgMCBSCj4+CmVuZG9iagoKMyAwIG9iago8PAovVHlwZSAvUGFnZXMKL0tpZHMgWzQgMCBSXQovQ291bnQgMQo+PgplbmRvYmoKCjQgMCBvYmoKPDwKL1R5cGUgL1BhZ2UKL1BhcmVudCAzIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQovUmVzb3VyY2VzIDw8Ci9Gb250IDw8Ci9GMSA1IDAgUgo+Pgo+PgovQ29udGVudHMgNiAwIFIKPj4KZW5kb2JqCgo1IDAgb2JqCjw8Ci9UeXBlIC9Gb250Ci9TdWJ0eXBlIC9UeXBlMQovQmFzZUZvbnQgL0hlbHZldGljYQo+PgplbmRvYmoKCjYgMCBvYmoKPDwKL0xlbmd0aCAyMDAKPj4Kc3RyZWFtCkJUCi9GMSAxMiBUZgo1MCA3NTAgVGQKKEpvaG4gRG9lIC0gRnVsbC1TdGFjayBERVYpIFRqCjAgLTMwIFRkCihFbWFpbDogam9obi5kb2VAZXhhbXBsZS5jb20pIFRqCjAgLTMwIFRkCihTa2lsbHM6IFJlYWN0LCBOb2RlLmpzLCBNb25nb0RCLCBUeXBlU2NyaXB0KSBUago2MCAzMDBtCkVUCmVuZHN0cmVhbQplbmRvYmoKCnhyZWYKMCA3CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMTc0IDAwMDAwIG4gCjAwMDAwMDAyMjEgMDAwMDAgbiAKMDAwMDAwMDI3OCAwMDAwMCBuIAowMDAwMDAwNDMzIDAwMDAwIG4gCjAwMDAwMDA1MTAgMDAwMDAgbiAKdHJhaWxlcgo8PAovU2l6ZSA3Ci9Sb290IDIgMCBSCi9JbmZvIDEgMCBSCj4+CnN0YXJ0eHJlZgo3NTEKJSVFT0Y=';
+    link.download = 'John_Doe_Resume.pdf';
+    link.click();
+    
+    toast.success("Resume download started!", {
+      style: {
+        background: '#1a1a2e',
+        border: '1px solid #0ea5e9',
+        color: '#ffffff'
+      }
+    });
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Background Grid */}
@@ -117,6 +148,7 @@ const HeroSection = () => {
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(157, 78, 221, 0.5)" }}
               whileTap={{ scale: 0.95 }}
+              onClick={handleViewPortfolio}
               className="px-8 py-4 bg-neon-purple text-white font-semibold rounded-lg neon-border hover:bg-opacity-90 transition-all"
             >
               View Portfolio
@@ -124,6 +156,7 @@ const HeroSection = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={handleDownloadResume}
               className="px-8 py-4 border border-neon-blue text-neon-blue font-semibold rounded-lg hover:bg-neon-blue hover:text-white transition-all"
             >
               Download Resume
