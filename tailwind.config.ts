@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Cyberpunk color palette
+				neon: {
+					purple: '#9d4edd',
+					blue: '#0ea5e9',
+					pink: '#ec4899',
+					cyan: '#06b6d4',
+					green: '#10b981'
+				},
+				cyber: {
+					dark: '#0a0a0f',
+					darker: '#050508',
+					card: 'rgba(15, 15, 25, 0.8)',
+					glass: 'rgba(255, 255, 255, 0.05)'
 				}
 			},
 			borderRadius: {
@@ -84,11 +99,59 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'glow': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.5' }
+				},
+				'cyber-pulse': {
+					'0%, 100%': { 
+						boxShadow: '0 0 5px #9d4edd, 0 0 10px #9d4edd, 0 0 15px #9d4edd',
+					},
+					'50%': { 
+						boxShadow: '0 0 10px #9d4edd, 0 0 20px #9d4edd, 0 0 30px #9d4edd',
+					}
+				},
+				'typing': {
+					'from': { width: '0' },
+					'to': { width: '100%' }
+				},
+				'blink': {
+					'from, to': { borderColor: 'transparent' },
+					'50%': { borderColor: '#9d4edd' }
+				},
+				'slide-up': {
+					'from': { 
+						opacity: '0',
+						transform: 'translateY(50px)'
+					},
+					'to': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'glow': 'glow 2s ease-in-out infinite alternate',
+				'cyber-pulse': 'cyber-pulse 2s ease-in-out infinite',
+				'typing': 'typing 3.5s steps(40, end)',
+				'blink': 'blink 1s step-end infinite',
+				'slide-up': 'slide-up 0.6s ease-out'
+			},
+			backgroundImage: {
+				'cyber-gradient': 'linear-gradient(135deg, #0a0a0f 0%, #1a0033 50%, #0f051a 100%)',
+				'neon-gradient': 'linear-gradient(135deg, #9d4edd 0%, #0ea5e9 50%, #ec4899 100%)',
+				'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)'
+			},
+			backdropBlur: {
+				xs: '2px'
 			}
 		}
 	},
