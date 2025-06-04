@@ -49,13 +49,27 @@ const certificates: Certificate[] = [
   }
 ];
 
-const FloatingCertificate = ({ certificate, position, index }: { certificate: Certificate; position: [number, number, number]; index: number }) => {
+const FloatingCertificate = ({ 
+  certificate, 
+  position, 
+  index, 
+  isSelected 
+}: { 
+  certificate: Certificate; 
+  position: [number, number, number]; 
+  index: number;
+  isSelected: boolean;
+}) => {
   const meshRef = useRef<THREE.Mesh>(null);
   
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime + index) * 0.2;
       meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.5 + index) * 0.2;
+      
+      // Scale selected certificate
+      const targetScale = isSelected ? 1.3 : 1;
+      meshRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.1);
     }
   });
 
@@ -64,11 +78,11 @@ const FloatingCertificate = ({ certificate, position, index }: { certificate: Ce
       <mesh ref={meshRef}>
         <boxGeometry args={[2, 1.4, 0.1]} />
         <meshStandardMaterial
-          color="#1a1a2e"
+          color={isSelected ? "#9d4edd" : "#1a1a2e"}
           transparent
-          opacity={0.9}
-          emissive="#9d4edd"
-          emissiveIntensity={0.1}
+          opacity={isSelected ? 1 : 0.9}
+          emissive={isSelected ? "#9d4edd" : "#9d4edd"}
+          emissiveIntensity={isSelected ? 0.3 : 0.1}
         />
       </mesh>
       
@@ -76,17 +90,17 @@ const FloatingCertificate = ({ certificate, position, index }: { certificate: Ce
       <mesh position={[0, 0, 0.05]}>
         <boxGeometry args={[2.1, 1.5, 0.05]} />
         <meshStandardMaterial
-          color="#9d4edd"
+          color={isSelected ? "#0ea5e9" : "#9d4edd"}
           wireframe
           transparent
-          opacity={0.6}
+          opacity={isSelected ? 1 : 0.6}
         />
       </mesh>
     </group>
   );
 };
 
-const CertificatesGallery = () => {
+const CertificatesGallery = ({ selectedCertId }: { selectedCertId: number }) => {
   const positions: [number, number, number][] = [
     [-3, 1, 0],
     [3, 1, 0],
@@ -106,6 +120,7 @@ const CertificatesGallery = () => {
           certificate={cert}
           position={positions[index]}
           index={index}
+          isSelected={cert.id === selectedCertId}
         />
       ))}
       
@@ -115,7 +130,7 @@ const CertificatesGallery = () => {
 };
 
 const CertificatesSection = () => {
-  const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
+  const [selectedCert, setSelectedCert] = useState<Certificate>(certificates[0]);
 
   return (
     <section id="certificates" className="py-20 px-6 relative overflow-hidden">
@@ -146,7 +161,7 @@ const CertificatesSection = () => {
             className="h-[500px] relative"
           >
             <div className="absolute inset-0 holographic rounded-2xl" />
-            <CertificatesGallery />
+            <CertificatesGallery selectedCertId={selectedCert.id} />
           </motion.div>
 
           {/* Certificate Details */}
@@ -162,7 +177,11 @@ const CertificatesSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="cyber-card p-6 cursor-pointer hover:border-neon-purple transition-all"
+                className={`cyber-card p-6 cursor-pointer transition-all ${
+                  selectedCert.id === cert.id 
+                    ? 'border-neon-purple bg-cyber-card/80' 
+                    : 'hover:border-neon-purple'
+                }`}
                 whileHover={{ scale: 1.02, boxShadow: "0 0 25px rgba(157, 78, 221, 0.3)" }}
                 onClick={() => setSelectedCert(cert)}
               >
@@ -175,6 +194,9 @@ const CertificatesSection = () => {
                     <p className="text-gray-300 mb-1">{cert.issuer}</p>
                     <p className="text-sm text-gray-400">{cert.date}</p>
                   </div>
+                  {selectedCert.id === cert.id && (
+                    <div className="w-3 h-3 bg-neon-purple rounded-full animate-pulse" />
+                  )}
                 </div>
                 <p className="text-gray-400 mt-4">{cert.description}</p>
               </motion.div>
