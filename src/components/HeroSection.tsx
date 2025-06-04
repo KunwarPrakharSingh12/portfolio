@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere, Box, Text3D, OrbitControls } from '@react-three/drei';
+import { Sphere, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 const FloatingAvatar = () => {
@@ -39,25 +39,6 @@ const FloatingAvatar = () => {
           emissiveIntensity={0.2}
         />
       </Sphere>
-
-      {/* Orbiting Elements */}
-      {[...Array(6)].map((_, i) => (
-        <Box
-          key={i}
-          args={[0.2, 0.2, 0.2]}
-          position={[
-            Math.cos((i / 6) * Math.PI * 2) * 4,
-            Math.sin((i / 6) * Math.PI * 2) * 0.5,
-            Math.sin((i / 6) * Math.PI * 2) * 4
-          ]}
-        >
-          <meshStandardMaterial
-            color={i % 2 === 0 ? "#ec4899" : "#06b6d4"}
-            emissive={i % 2 === 0 ? "#ec4899" : "#06b6d4"}
-            emissiveIntensity={0.3}
-          />
-        </Box>
-      ))}
     </group>
   );
 };
