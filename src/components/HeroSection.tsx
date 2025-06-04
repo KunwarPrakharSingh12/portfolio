@@ -1,4 +1,3 @@
-
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -97,11 +96,18 @@ const HeroSection = () => {
   };
 
   const handleDownloadResume = () => {
-    // Create a dummy PDF download
+    // Convert Google Drive sharing link to direct download link
+    const fileId = '1RscX_dDL2kUxGVurFY-FhgZOrRKBurZ-';
+    const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+    
+    // Create a temporary link and trigger download
     const link = document.createElement('a');
-    link.href = 'data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVGl0bGUgKEpvaG4gRG9lIC0gRnVsbC1TdGFjayBERVYgUmVzdW1lKQovQ3JlYXRvciAoTG92YWJsZSBQb3J0Zm9saW8pCi9Qcm9kdWNlciAoTG92YWJsZSBQb3J0Zm9saW8pCi9DcmVhdGlvbkRhdGUgKEQ6MjAyNDA2MDQwMDAwMDBaKQo+PgplbmRvYmoKCjIgMCBvYmoKPDwKL1R5cGUgL0NhdGFsb2cKL1BhZ2VzIDMgMCBSCj4+CmVuZG9iagoKMyAwIG9iago8PAovVHlwZSAvUGFnZXMKL0tpZHMgWzQgMCBSXQovQ291bnQgMQo+PgplbmRvYmoKCjQgMCBvYmoKPDwKL1R5cGUgL1BhZ2UKL1BhcmVudCAzIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQovUmVzb3VyY2VzIDw8Ci9Gb250IDw8Ci9GMSA1IDAgUgo+Pgo+PgovQ29udGVudHMgNiAwIFIKPj4KZW5kb2JqCgo1IDAgb2JqCjw8Ci9UeXBlIC9Gb250Ci9TdWJ0eXBlIC9UeXBlMQovQmFzZUZvbnQgL0hlbHZldGljYQo+PgplbmRvYmoKCjYgMCBvYmoKPDwKL0xlbmd0aCAyMDAKPj4Kc3RyZWFtCkJUCi9GMSAxMiBUZgo1MCA3NTAgVGQKKEpvaG4gRG9lIC0gRnVsbC1TdGFjayBERVYpIFRqCjAgLTMwIFRkCihFbWFpbDogam9obi5kb2VAZXhhbXBsZS5jb20pIFRqCjAgLTMwIFRkCihTa2lsbHM6IFJlYWN0LCBOb2RlLmpzLCBNb25nb0RCLCBUeXBlU2NyaXB0KSBUago2MCAzMDBtCkVUCmVuZHN0cmVhbQplbmRvYmoKCnhyZWYKMCA3CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMTc0IDAwMDAwIG4gCjAwMDAwMDAyMjEgMDAwMDAgbiAKMDAwMDAwMDI3OCAwMDAwMCBuIAowMDAwMDAwNDMzIDAwMDAwIG4gCjAwMDAwMDA1MTAgMDAwMDAgbiAKdHJhaWxlcgo8PAovU2l6ZSA3Ci9Sb290IDIgMCBSCi9JbmZvIDEgMCBSCj4+CnN0YXJ0eHJlZgo3NTEKJSVFT0Y=';
-    link.download = 'John_Doe_Resume.pdf';
+    link.href = downloadUrl;
+    link.download = 'Resume.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
     
     toast.success("Resume download started!", {
       style: {
