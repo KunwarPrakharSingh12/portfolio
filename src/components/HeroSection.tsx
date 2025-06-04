@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere, OrbitControls } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 const FloatingAvatar = () => {
@@ -18,7 +18,8 @@ const FloatingAvatar = () => {
   return (
     <group ref={groupRef}>
       {/* Holographic Frame */}
-      <Sphere args={[2.5, 32, 32]} position={[0, 0, 0]}>
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[2.5, 32, 32]} />
         <meshStandardMaterial
           color="#9d4edd"
           wireframe
@@ -27,10 +28,11 @@ const FloatingAvatar = () => {
           emissive="#9d4edd"
           emissiveIntensity={0.1}
         />
-      </Sphere>
+      </mesh>
       
       {/* Inner Glow */}
-      <Sphere args={[2, 32, 32]} position={[0, 0, 0]}>
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[2, 32, 32]} />
         <meshStandardMaterial
           color="#0ea5e9"
           transparent
@@ -38,7 +40,7 @@ const FloatingAvatar = () => {
           emissive="#0ea5e9"
           emissiveIntensity={0.2}
         />
-      </Sphere>
+      </mesh>
     </group>
   );
 };
