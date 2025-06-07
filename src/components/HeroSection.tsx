@@ -82,11 +82,8 @@ const HeroSection = () => {
   };
 
   const handleViewPortfolio = () => {
-    const projectsSection = document.getElementById('projects');
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
-    }
-    toast.success("Viewing my latest projects below!", {
+    window.open('https://www.linkedin.com/in/kunwarprakharsingh/', '_blank');
+    toast.success("Opening LinkedIn profile!", {
       style: {
         background: '#1a1a2e',
         border: '1px solid #9d4edd',
@@ -97,53 +94,8 @@ const HeroSection = () => {
 
   const handleDownloadResume = () => {
     try {
-      // Create a sample resume PDF content
-      const resumeContent = `
-        John Doe - Full-Stack MERN Developer
-        
-        Contact Information:
-        Email: john.doe@example.com
-        Phone: (555) 123-4567
-        
-        Skills:
-        • React.js & Redux
-        • Node.js & Express
-        • MongoDB & PostgreSQL
-        • TypeScript & JavaScript
-        • Three.js & WebGL
-        • AWS & Docker
-        
-        Experience:
-        Senior Full-Stack Developer (2021-Present)
-        • Built scalable web applications using MERN stack
-        • Implemented 3D visualizations with Three.js
-        • Optimized application performance by 40%
-        
-        Projects:
-        • E-commerce Platform - React, Node.js, MongoDB
-        • 3D Portfolio Website - Three.js, React, Framer Motion
-        • Real-time Chat App - Socket.io, Express, React
-      `;
-
-      // Create a blob with the resume content
-      const blob = new Blob([resumeContent], { type: 'text/plain' });
-      const url = window.URL.createObjectURL(blob);
-      
-      // Create download link
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'John_Doe_Resume.txt';
-      link.style.display = 'none';
-      
-      // Trigger download
-      document.body.appendChild(link);
-      link.click();
-      
-      // Clean up
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-      
-      toast.success("Resume downloaded successfully!", {
+      window.open('https://drive.google.com/file/d/1RscX_dDL2kUxGVurFY-FhgZOrRKBurZ-/view?usp=sharing', '_blank');
+      toast.success("Opening resume in Google Drive!", {
         style: {
           background: '#1a1a2e',
           border: '1px solid #0ea5e9',
@@ -151,8 +103,8 @@ const HeroSection = () => {
         }
       });
     } catch (error) {
-      console.error('Download failed:', error);
-      toast.error("Download failed. Please try again.", {
+      console.error('Failed to open resume:', error);
+      toast.error("Failed to open resume. Please try again.", {
         style: {
           background: '#1a1a2e',
           border: '1px solid #ef4444',
