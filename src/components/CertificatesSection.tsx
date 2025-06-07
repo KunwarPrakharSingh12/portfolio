@@ -1,4 +1,3 @@
-
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -17,11 +16,11 @@ interface Certificate {
 const certificates: Certificate[] = [
   {
     id: 1,
-    title: "React Developer Certification",
-    issuer: "Meta",
+    title: "C-Language Certificate",
+    issuer: "Punjab Technical University",
     date: "2024",
     image: "🏆",
-    description: "Advanced React patterns and performance optimization"
+    description: "Programming fundamentals and C language mastery with Grade A"
   },
   {
     id: 2,
