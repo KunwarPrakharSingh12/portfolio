@@ -93,35 +93,14 @@ const HeroSection = () => {
   };
 
   const handleDownloadResume = () => {
-    try {
-      const fileId = '1RscX_dDL2kUxGVurFY-FhgZOrRKBurZ-';
-      const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
-      
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = 'Resume.pdf';
-      link.target = '_blank';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      toast.success("Resume download started!", {
-        style: {
-          background: '#1a1a2e',
-          border: '1px solid #0ea5e9',
-          color: '#ffffff'
-        }
-      });
-    } catch (error) {
-      console.error('Failed to download resume:', error);
-      toast.error("Failed to download resume. Please try again.", {
-        style: {
-          background: '#1a1a2e',
-          border: '1px solid #ef4444',
-          color: '#ffffff'
-        }
-      });
-    }
+    window.open('https://drive.google.com/file/d/1RscX_dDL2kUxGVurFY-FhgZOrRKBurZ-/view?usp=sharing', '_blank');
+    toast.success("Opening resume in new tab!", {
+      style: {
+        background: '#1a1a2e',
+        border: '1px solid #0ea5e9',
+        color: '#ffffff'
+      }
+    });
   };
 
   return (
