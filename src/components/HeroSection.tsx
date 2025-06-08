@@ -117,9 +117,7 @@ const HeroSection = () => {
             boxShadow: "0 0 25px rgba(157, 78, 221, 0.5)"
           }} whileTap={{
             scale: 0.95
-          }} onClick={handleViewPortfolio} className="px-8 py-4 bg-neon-purple text-white font-semibold rounded-lg neon-border hover:bg-opacity-90 transition-all">
-              View LinkedIn
-            </motion.button>
+          }} onClick={handleViewPortfolio} className="px-8 py-4 bg-neon-purple text-white font-semibold rounded-lg neon-border hover:bg-opacity-90 transition-all">View  Resume</motion.button>
             <motion.button whileHover={{
             scale: 1.05
           }} whileTap={{
