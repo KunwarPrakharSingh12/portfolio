@@ -28,7 +28,7 @@ const Preloader = () => {
           <h2 className="text-2xl font-bold neon-text text-neon-purple">
             Loading Portfolio
           </h2>
-          <p className="text-gray-400">Initializing cyberpunk experience...</p>
+          <p className="text-gray-400">Initializing Kunwar Prakhar Singh's portfolio...</p>
         </motion.div>
       </div>
     </motion.div>
@@ -81,10 +81,13 @@ const Index = () => {
                   whileHover={{ scale: 1.05 }}
                   className="text-2xl font-bold neon-text text-neon-purple mb-4"
                 >
-                  &lt;DEV/&gt;
+                  &lt;KPS/&gt;
                 </motion.div>
                 <p className="text-gray-400">
-                  © 2024 John Doe. Crafted with React, Three.js & Cyber Dreams
+                  © 2024 Kunwar Prakhar Singh. Crafted with React, Three.js & Cyber Dreams
+                </p>
+                <p className="text-sm text-gray-500 mt-2">
+                  Student at Lovely Professional University | Prayagraj, Uttar Pradesh
                 </p>
               </div>
             </footer>

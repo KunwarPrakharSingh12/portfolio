@@ -57,26 +57,26 @@ const ContactSection = () => {
     {
       icon: '📧',
       label: 'Email',
-      value: 'john.doe@example.com',
-      action: () => window.open('mailto:john.doe@example.com')
+      value: 'kuprakharsingh@gmail.com',
+      action: () => window.open('mailto:kuprakharsingh@gmail.com')
     },
     {
       icon: '💼',
       label: 'LinkedIn',
-      value: '/in/johndoe',
-      action: () => window.open('https://linkedin.com/in/johndoe')
+      value: '/in/kunwarprakharsingh',
+      action: () => window.open('https://www.linkedin.com/in/kunwarprakharsingh/')
     },
     {
-      icon: '🐙',
-      label: 'GitHub',
-      value: '@johndoe',
-      action: () => window.open('https://github.com/johndoe')
+      icon: '🌐',
+      label: 'Linktree',
+      value: '@kunwar_prakhar_singh',
+      action: () => window.open('https://linktr.ee/kunwar_prakhar_singh')
     },
     {
-      icon: '🐦',
-      label: 'Twitter',
-      value: '@johndoe_dev',
-      action: () => window.open('https://twitter.com/johndoe_dev')
+      icon: '📞',
+      label: 'Phone',
+      value: '+91-7392921135',
+      action: () => window.open('tel:+917392921135')
     }
   ];
 
@@ -241,27 +241,27 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Fun Stats */}
+            {/* Location & Education Info */}
             <div className="cyber-card p-8">
               <h3 className="text-xl font-bold text-white mb-6">
-                Let's Build Together
+                About Me
               </h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-neon-purple neon-text">24h</div>
-                  <div className="text-sm text-gray-400">Response Time</div>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-400">Location:</span>
+                  <span className="text-neon-purple font-semibold">Prayagraj, UP</span>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-neon-blue neon-text">50+</div>
-                  <div className="text-sm text-gray-400">Projects Done</div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-400">Education:</span>
+                  <span className="text-neon-blue font-semibold">LPU (2023-2028)</span>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-neon-purple neon-text">100%</div>
-                  <div className="text-sm text-gray-400">Client Satisfaction</div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-400">Experience:</span>
+                  <span className="text-neon-purple font-semibold">2+ Years</span>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-neon-blue neon-text">3+</div>
-                  <div className="text-sm text-gray-400">Years Experience</div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-400">Availability:</span>
+                  <span className="text-green-400 font-semibold">Open to Work</span>
                 </div>
               </div>
             </div>

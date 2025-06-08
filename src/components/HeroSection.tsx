@@ -1,3 +1,4 @@
+
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -93,8 +94,8 @@ const HeroSection = () => {
   };
 
   const handleDownloadResume = () => {
-    window.open('https://drive.google.com/file/d/1RscX_dDL2kUxGVurFY-FhgZOrRKBurZ-/view?usp=sharing', '_blank');
-    toast.success("Opening resume in new tab!", {
+    window.open('https://linktr.ee/kunwar_prakhar_singh', '_blank');
+    toast.success("Opening Linktree profile!", {
       style: {
         background: '#1a1a2e',
         border: '1px solid #0ea5e9',
@@ -120,18 +121,18 @@ const HeroSection = () => {
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
               <span className="block text-white">Hello, I'm</span>
               <span className="block neon-text text-neon-purple typing-effect">
-                John Doe
+                Kunwar Prakhar Singh
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 font-light">
-              Full-Stack MERN Developer
+              Full-Stack MERN Developer & Student at LPU
             </p>
           </motion.div>
 
           <motion.div variants={itemVariants}>
             <p className="text-lg text-gray-400 max-w-2xl leading-relaxed">
-              Crafting immersive digital experiences with cutting-edge technology. 
-              Specializing in React, Node.js, MongoDB, and modern web technologies.
+              Results-driven professional with passion for Web Development. 
+              Specializing in React, Node.js, and modern web technologies from Prayagraj, Uttar Pradesh.
             </p>
           </motion.div>
 
@@ -142,7 +143,7 @@ const HeroSection = () => {
               onClick={handleViewPortfolio}
               className="px-8 py-4 bg-neon-purple text-white font-semibold rounded-lg neon-border hover:bg-opacity-90 transition-all"
             >
-              View Portfolio
+              View LinkedIn
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -150,13 +151,13 @@ const HeroSection = () => {
               onClick={handleDownloadResume}
               className="px-8 py-4 border border-neon-blue text-neon-blue font-semibold rounded-lg hover:bg-neon-blue hover:text-white transition-all"
             >
-              Download Resume
+              Visit Linktree
             </motion.button>
           </motion.div>
 
           {/* Tech Stack Icons */}
           <motion.div variants={itemVariants} className="flex justify-center lg:justify-start space-x-6 pt-8">
-            {['React', 'Node.js', 'MongoDB', 'Next.js'].map((tech, index) => (
+            {['React', 'JavaScript', 'Python', 'Java'].map((tech, index) => (
               <motion.div
                 key={tech}
                 whileHover={{ y: -5, scale: 1.1 }}
@@ -171,7 +172,7 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
 
-        {/* 3D Scene */}
+        {/* 3D Scene with Photo Placeholder */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -181,9 +182,15 @@ const HeroSection = () => {
           <div className="absolute inset-0 holographic rounded-2xl" />
           <HeroScene />
           
-          {/* Avatar Placeholder */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-neon-purple to-neon-blue flex items-center justify-center border-2 border-white/20">
-            <span className="text-4xl">👨‍💻</span>
+          {/* Photo Placeholder - Ready for user's image */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-neon-purple to-neon-blue flex items-center justify-center border-2 border-white/20 overflow-hidden">
+            {/* Placeholder for user photo - can be replaced with actual image */}
+            <div className="w-full h-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white text-2xl font-bold">
+              KPS
+            </div>
+            {/* To add actual photo, replace the div above with:
+            <img src="/path-to-your-photo.jpg" alt="Kunwar Prakhar Singh" className="w-full h-full object-cover" />
+            */}
           </div>
         </motion.div>
       </div>

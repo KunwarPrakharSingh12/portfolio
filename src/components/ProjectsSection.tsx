@@ -11,62 +11,42 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.',
+      title: 'Banking Management System (BMS)',
+      description: 'A comprehensive banking solution enabling account creation and management for savings, checking, and fixed deposit accounts. Features secure fund transfers through NEFT, RTGS, IMPS, and UPI integration.',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe', 'JWT'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
+      tech: ['Java', 'DBMS', 'SQL', 'OOP'],
+      github: 'https://github.com/kunwarprakharsingh',
+      demo: 'https://linktr.ee/kunwar_prakhar_singh',
       featured: true,
     },
     {
       id: 2,
-      title: 'Social Media Dashboard',
-      description: 'Real-time social media analytics dashboard with React and Firebase. Includes data visualization, real-time updates, and responsive design.',
+      title: 'Dhanvantri-Vatika: Virtual Herbal Garden',
+      description: 'An immersive web-based educational platform showcasing Ayurvedic and AYUSH medicinal plants. Offers interactive 2D/3D experiences with comprehensive herbal garden environments.',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-      tech: ['React', 'Firebase', 'Chart.js', 'Material-UI'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      featured: false,
+      tech: ['HTML', 'CSS', 'JavaScript', '3D Graphics'],
+      github: 'https://github.com/kunwarprakharsingh',
+      demo: 'https://linktr.ee/kunwar_prakhar_singh',
+      featured: true,
     },
     {
       id: 3,
-      title: 'Task Management App',
-      description: 'Collaborative task management application with drag-and-drop functionality, real-time updates, and team collaboration features.',
+      title: 'Algorithm Debugging Solutions',
+      description: 'Collection of efficient algorithms and debugging solutions developed during internship at Rajeev Gandhi Computer Saksharta Mission. Focused on C programming optimization.',
       image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop',
-      tech: ['React', 'Express', 'Socket.io', 'PostgreSQL'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      featured: true,
-    },
-    {
-      id: 4,
-      title: 'AI Chat Bot',
-      description: 'Intelligent chatbot powered by OpenAI API with natural language processing and context-aware responses.',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
-      tech: ['React', 'OpenAI API', 'Node.js', 'WebSocket'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
+      tech: ['C', 'GDB', 'Algorithms', 'Debugging'],
+      github: 'https://github.com/kunwarprakharsingh',
+      demo: 'https://linktr.ee/kunwar_prakhar_singh',
       featured: false,
     },
     {
-      id: 5,
-      title: 'Crypto Portfolio Tracker',
-      description: 'Real-time cryptocurrency portfolio tracking with price alerts, market analysis, and portfolio optimization.',
-      image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&h=600&fit=crop',
-      tech: ['React', 'CoinGecko API', 'Chart.js', 'Redux'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      featured: true,
-    },
-    {
-      id: 6,
-      title: 'Weather App',
-      description: 'Beautiful weather application with location-based forecasts, interactive maps, and severe weather alerts.',
-      image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=800&h=600&fit=crop',
-      tech: ['React', 'OpenWeather API', 'Mapbox', 'PWA'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
+      id: 4,
+      title: 'Portfolio Website',
+      description: 'Modern, responsive portfolio website built with React and Tailwind CSS featuring cyberpunk aesthetics and 3D elements. Showcasing professional development skills.',
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
+      tech: ['React', 'Tailwind CSS', 'Three.js', 'TypeScript'],
+      github: 'https://github.com/kunwarprakharsingh',
+      demo: 'https://linktr.ee/kunwar_prakhar_singh',
       featured: false,
     },
   ];
@@ -175,7 +155,7 @@ const ProjectsSection = () => {
             <span className="text-white">Projects</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            A collection of my best work showcasing modern web development techniques and innovative solutions
+            Showcasing innovative solutions in web development, banking systems, and educational platforms
           </p>
         </motion.div>
 
@@ -196,6 +176,7 @@ const ProjectsSection = () => {
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(14, 165, 233, 0.5)" }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => window.open('https://github.com/kunwarprakharsingh', '_blank')}
             className="px-8 py-4 border border-neon-blue text-neon-blue font-semibold rounded-lg hover:bg-neon-blue hover:text-white transition-all flex items-center space-x-2 mx-auto"
           >
             <Code size={20} />

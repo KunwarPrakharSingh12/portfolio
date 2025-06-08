@@ -1,3 +1,4 @@
+
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -24,27 +25,43 @@ const certificates: Certificate[] = [
   },
   {
     id: 2,
-    title: "Node.js Professional",
-    issuer: "NodeJS Foundation",
-    date: "2024",
-    image: "🥇",
-    description: "Backend development and API design expertise"
+    title: "Inno-Tech 2025 - 2nd Position",
+    issuer: "Pushpa Gujral Science City",
+    date: "2025",
+    image: "🥈",
+    description: "Secured 2nd position in innovation and technology competition"
   },
   {
     id: 3,
-    title: "MongoDB Certified Developer",
-    issuer: "MongoDB University",
-    date: "2023",
-    image: "🎖️",
-    description: "Database design and optimization specialist"
+    title: "Web-e-Stan Participation",
+    issuer: "Coding Ninja",
+    date: "2024",
+    image: "💻",
+    description: "Active participation in web development competition"
   },
   {
     id: 4,
-    title: "AWS Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    date: "2023",
-    image: "☁️",
-    description: "Cloud infrastructure and deployment"
+    title: "Code-A-Hunt Participation",
+    issuer: "Coding Block",
+    date: "2024",
+    image: "🎯",
+    description: "Competitive programming and algorithm challenges"
+  },
+  {
+    id: 5,
+    title: "Hack_IITK CTF 2024",
+    issuer: "IIT Kanpur",
+    date: "2024",
+    image: "🔐",
+    description: "Cybersecurity capture the flag competition participation"
+  },
+  {
+    id: 6,
+    title: "RGCSM Internship",
+    issuer: "Rajeev Gandhi Computer Saksharta Mission",
+    date: "2024",
+    image: "🎓",
+    description: "Algorithm development and debugging expertise certification"
   }
 ];
 
@@ -104,7 +121,9 @@ const CertificatesGallery = ({ selectedCertId }: { selectedCertId: number }) => 
     [-3, 1, 0],
     [3, 1, 0],
     [-3, -1, 0],
-    [3, -1, 0]
+    [3, -1, 0],
+    [0, 2, 0],
+    [0, -2, 0]
   ];
 
   return (
@@ -117,7 +136,7 @@ const CertificatesGallery = ({ selectedCertId }: { selectedCertId: number }) => 
         <FloatingCertificate
           key={cert.id}
           certificate={cert}
-          position={positions[index]}
+          position={positions[index % positions.length]}
           index={index}
           isSelected={cert.id === selectedCertId}
         />
@@ -144,10 +163,10 @@ const CertificatesSection = () => {
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="neon-text text-neon-purple">Certificates</span>{' '}
-            <span className="text-white">& Awards</span>
+            <span className="text-white">& Achievements</span>
           </h2>
           <p className="text-xl text-gray-400 mb-12">
-            Professional certifications and achievements in web development
+            Professional certifications and achievements in programming, competitions, and technology
           </p>
         </motion.div>
 
@@ -168,7 +187,7 @@ const CertificatesSection = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
+            className="space-y-6 max-h-[500px] overflow-y-auto"
           >
             {certificates.map((cert, index) => (
               <motion.div
