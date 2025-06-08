@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 
 interface Certificate {
   id: number;
@@ -12,6 +13,7 @@ interface Certificate {
   date: string;
   image: string;
   description: string;
+  certificateImage?: string;
 }
 
 const certificates: Certificate[] = [
@@ -21,7 +23,8 @@ const certificates: Certificate[] = [
     issuer: "Punjab Technical University",
     date: "2024",
     image: "🏆",
-    description: "Programming fundamentals and C language mastery with Grade A"
+    description: "Programming fundamentals and C language mastery with Grade A",
+    certificateImage: "/lovable-uploads/b8f7c630-d481-49d7-8fb9-f875ce0771c7.png"
   },
   {
     id: 2,
@@ -29,7 +32,8 @@ const certificates: Certificate[] = [
     issuer: "Pushpa Gujral Science City",
     date: "2025",
     image: "🥈",
-    description: "Secured 2nd position in innovation and technology competition"
+    description: "Secured 2nd position in innovation and technology competition",
+    certificateImage: "/lovable-uploads/d3752124-0929-427a-987f-724c3602ebdd.png"
   },
   {
     id: 3,
@@ -217,6 +221,36 @@ const CertificatesSection = () => {
                   )}
                 </div>
                 <p className="text-gray-400 mt-4">{cert.description}</p>
+                
+                {/* Show certificate button if certificate image exists */}
+                {cert.certificateImage && (
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="mt-4 px-4 py-2 bg-neon-purple text-white rounded-lg hover:bg-opacity-90 transition-all text-sm"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        View Certificate
+                      </motion.button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl max-h-[90vh] bg-cyber-dark border-neon-purple">
+                      <div className="p-4">
+                        <h3 className="text-xl font-bold text-neon-purple mb-4 text-center">
+                          {cert.title}
+                        </h3>
+                        <div className="flex justify-center">
+                          <img 
+                            src={cert.certificateImage} 
+                            alt={cert.title}
+                            className="max-w-full max-h-[70vh] object-contain rounded-lg border border-neon-purple/30"
+                          />
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                )}
               </motion.div>
             ))}
           </motion.div>
