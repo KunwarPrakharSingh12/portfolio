@@ -1,4 +1,3 @@
-
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -172,7 +171,7 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
 
-        {/* 3D Scene with Photo Placeholder */}
+        {/* 3D Scene with Photo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -182,15 +181,13 @@ const HeroSection = () => {
           <div className="absolute inset-0 holographic rounded-2xl" />
           <HeroScene />
           
-          {/* Photo Placeholder - Ready for user's image */}
+          {/* Your Photo */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-neon-purple to-neon-blue flex items-center justify-center border-2 border-white/20 overflow-hidden">
-            {/* Placeholder for user photo - can be replaced with actual image */}
-            <div className="w-full h-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white text-2xl font-bold">
-              KPS
-            </div>
-            {/* To add actual photo, replace the div above with:
-            <img src="/path-to-your-photo.jpg" alt="Kunwar Prakhar Singh" className="w-full h-full object-cover" />
-            */}
+            <img 
+              src="/lovable-uploads/84d2453e-bb4f-4067-b2fe-ec3ac7a688be.png" 
+              alt="Kunwar Prakhar Singh" 
+              className="w-full h-full object-cover" 
+            />
           </div>
         </motion.div>
       </div>
