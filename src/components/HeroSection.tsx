@@ -1,9 +1,10 @@
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { toast } from 'sonner';
+
 const FloatingAvatar = () => {
   const groupRef = useRef<THREE.Group>(null);
   useFrame(state => {
@@ -26,6 +27,7 @@ const FloatingAvatar = () => {
       </mesh>
     </group>;
 };
+
 const HeroScene = () => {
   return <Canvas camera={{
     position: [0, 0, 10],
@@ -38,7 +40,16 @@ const HeroScene = () => {
       <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
     </Canvas>;
 };
+
 const HeroSection = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const containerVariants = {
     hidden: {
       opacity: 0
@@ -51,6 +62,7 @@ const HeroSection = () => {
       }
     }
   };
+
   const itemVariants = {
     hidden: {
       y: 50,
@@ -65,6 +77,7 @@ const HeroSection = () => {
       }
     }
   };
+
   const handleViewPortfolio = () => {
     window.open('https://www.linkedin.com/in/kunwarprakharsingh/', '_blank');
     toast.success("Opening LinkedIn profile!", {
@@ -75,6 +88,7 @@ const HeroSection = () => {
       }
     });
   };
+
   const handleDownloadResume = () => {
     window.open('https://linktr.ee/kunwar_prakhar_singh', '_blank');
     toast.success("Opening Linktree profile!", {
@@ -85,9 +99,17 @@ const HeroSection = () => {
       }
     });
   };
-  return <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+
+  const scrollToNextSection = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Background Grid */}
-      
       
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Text Content */}
@@ -112,46 +134,69 @@ const HeroSection = () => {
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <motion.button whileHover={{
-            scale: 1.05,
-            boxShadow: "0 0 25px rgba(157, 78, 221, 0.5)"
-          }} whileTap={{
-            scale: 0.95
-          }} onClick={handleViewPortfolio} className="px-8 py-4 bg-neon-purple text-white font-semibold rounded-lg neon-border hover:bg-opacity-90 transition-all">View  Resume</motion.button>
-            <motion.button whileHover={{
-            scale: 1.05
-          }} whileTap={{
-            scale: 0.95
-          }} onClick={handleDownloadResume} className="px-8 py-4 border border-neon-blue text-neon-blue font-semibold rounded-lg hover:bg-neon-blue hover:text-white transition-all">
+            <motion.button 
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 25px rgba(157, 78, 221, 0.5)"
+              }} 
+              whileTap={{
+                scale: 0.95
+              }} 
+              onClick={handleViewPortfolio} 
+              className="px-8 py-4 bg-neon-purple text-white font-semibold rounded-lg neon-border hover:bg-opacity-90 transition-all"
+            >
+              View Resume
+            </motion.button>
+            <motion.button 
+              whileHover={{
+                scale: 1.05
+              }} 
+              whileTap={{
+                scale: 0.95
+              }} 
+              onClick={handleDownloadResume} 
+              className="px-8 py-4 border border-neon-blue text-neon-blue font-semibold rounded-lg hover:bg-neon-blue hover:text-white transition-all"
+            >
               Visit Linktree
             </motion.button>
           </motion.div>
 
           {/* Tech Stack Icons */}
           <motion.div variants={itemVariants} className="flex justify-center lg:justify-start space-x-6 pt-8">
-            {['React', 'JavaScript', 'Python', 'Java'].map((tech, index) => <motion.div key={tech} whileHover={{
-            y: -5,
-            scale: 1.1
-          }} className="text-center">
+            {['React', 'JavaScript', 'Python', 'Java'].map((tech, index) => (
+              <motion.div 
+                key={tech} 
+                whileHover={{
+                  y: -5,
+                  scale: 1.1
+                }} 
+                className="text-center"
+              >
                 <div className="w-12 h-12 bg-cyber-card border border-white/10 rounded-lg flex items-center justify-center mb-2 hover:border-neon-purple transition-colors">
                   <span className="text-sm font-mono">{tech.charAt(0)}</span>
                 </div>
                 <span className="text-xs text-gray-400">{tech}</span>
-              </motion.div>)}
+              </motion.div>
+            ))}
           </motion.div>
         </motion.div>
 
         {/* 3D Scene with Photo */}
-        <motion.div initial={{
-        opacity: 0,
-        scale: 0.8
-      }} animate={{
-        opacity: 1,
-        scale: 1
-      }} transition={{
-        duration: 1,
-        delay: 0.5
-      }} className="h-[500px] relative">
+        <motion.div 
+          initial={{
+            opacity: 0,
+            scale: 0.8
+          }} 
+          animate={{
+            opacity: 1,
+            scale: 1
+          }} 
+          transition={{
+            duration: 1,
+            delay: 0.5
+          }} 
+          className="h-[500px] relative"
+        >
           <div className="absolute inset-0 holographic rounded-2xl" />
           <HeroScene />
           
@@ -163,27 +208,46 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div initial={{
-      opacity: 0
-    }} animate={{
-      opacity: 1
-    }} transition={{
-      delay: 2
-    }} className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <motion.div animate={{
-        y: [0, 10, 0]
-      }} transition={{
-        duration: 2,
-        repeat: Infinity
-      }} className="w-6 h-10 border-2 border-neon-purple rounded-full flex justify-center">
-          <motion.div animate={{
-          y: [0, 12, 0]
-        }} transition={{
-          duration: 2,
-          repeat: Infinity
-        }} className="w-1 h-3 bg-neon-purple rounded-full mt-2" />
+      <motion.div 
+        initial={{
+          opacity: 0
+        }} 
+        animate={{
+          opacity: 1
+        }} 
+        transition={{
+          delay: 2
+        }} 
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+        onClick={scrollToNextSection}
+      >
+        <motion.div 
+          animate={{
+            y: [0, 10, 0]
+          }} 
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }} 
+          className="w-6 h-10 border-2 border-neon-purple rounded-full flex justify-center hover:border-neon-blue transition-colors"
+        >
+          <motion.div 
+            animate={{
+              y: [0, 12, 0]
+            }} 
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }} 
+            className="w-1 h-3 bg-neon-purple rounded-full mt-2" 
+          />
         </motion.div>
+        <p className="text-xs text-gray-400 mt-2 text-center">Scroll Down</p>
       </motion.div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
