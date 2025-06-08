@@ -1,10 +1,10 @@
-
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import Computer3D from './Computer3D';
 
 interface Certificate {
   id: number;
@@ -156,7 +156,7 @@ const CertificatesSection = () => {
 
   return (
     <section id="certificates" className="py-20 px-6 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
+      <Computer3D />
       
       <div className="max-w-7xl mx-auto">
         <motion.div
