@@ -79,7 +79,7 @@ const HeroSection = () => {
   };
 
   const handleViewPortfolio = () => {
-    window.open('https://www.linkedin.com/in/kunwarprakharsingh/', '_blank');
+    window.open('https://drive.google.com/file/d/1RscX_dDL2kUxGVurFY-FhgZOrRKBurZ-/view?usp=drive_link', '_blank');
     toast.success("Opening LinkedIn profile!", {
       style: {
         background: '#1a1a2e',
@@ -163,7 +163,7 @@ const HeroSection = () => {
 
           {/* Tech Stack Icons */}
           <motion.div variants={itemVariants} className="flex justify-center lg:justify-start space-x-6 pt-8">
-            {['React', 'JavaScript', 'Python', 'Java'].map((tech, index) => (
+            {['React', 'JavaScript', 'Python', 'Java', 'C/C++'].map((tech, index) => (
               <motion.div 
                 key={tech} 
                 whileHover={{
@@ -202,7 +202,7 @@ const HeroSection = () => {
           
           {/* Your Photo */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-neon-purple to-neon-blue flex items-center justify-center border-2 border-white/20 overflow-hidden">
-            <img src="/lovable-uploads/84d2453e-bb4f-4067-b2fe-ec3ac7a688be.png" alt="Kunwar Prakhar Singh" className="w-full h-full object-cover" />
+            <img src="/uploads/84d2453e-bb4f-4067-b2fe-ec3ac7a688be.png" alt="Kunwar Prakhar Singh" className="w-full h-full object-cover" />
           </div>
         </motion.div>
       </div>
@@ -244,7 +244,7 @@ const HeroSection = () => {
             className="w-1 h-3 bg-neon-purple rounded-full mt-2" 
           />
         </motion.div>
-        <p className="text-xs text-gray-400 mt-2 text-center">Scroll Down</p>
+        <p className="text-xs text-gray-400 mt-2 text-center"></p>
       </motion.div>
     </section>
   );

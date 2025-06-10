@@ -4,7 +4,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import Computer3D from './Computer3D';
+// import Computer3D from './Computer3D';
 
 interface Certificate {
   id: number;
@@ -20,11 +20,11 @@ const certificates: Certificate[] = [
   {
     id: 1,
     title: "C-Language Certificate",
-    issuer: "Punjab Technical University",
+    issuer: "Rajeev Gandhi Computer Saksharta Mission",
     date: "2024",
     image: "🏆",
     description: "Programming fundamentals and C language mastery with Grade A",
-    certificateImage: "/lovable-uploads/b8f7c630-d481-49d7-8fb9-f875ce0771c7.png"
+    certificateImage: "/uploads/b8f7c630-d481-49d7-8fb9-f875ce0771c7.png"
   },
   {
     id: 2,
@@ -33,23 +33,26 @@ const certificates: Certificate[] = [
     date: "2025",
     image: "🥈",
     description: "Secured 2nd position in innovation and technology competition",
-    certificateImage: "/lovable-uploads/d3752124-0929-427a-987f-724c3602ebdd.png"
+    certificateImage: "/uploads/d3752124-0929-427a-987f-724c3602ebdd.png"
   },
-  {
-    id: 3,
-    title: "Web-e-Stan Participation",
-    issuer: "Coding Ninja",
-    date: "2024",
-    image: "💻",
-    description: "Active participation in web development competition"
-  },
+  // {
+  //   // id: 3,
+  //   // title: "Web-e-Stan Participation",
+  //   // issuer: "Coding Ninja",
+  //   // date: "2024",
+  //   // image: "💻",
+  //   // description: "Active participation in web development competition",
+  //   // certificateImage: "/uploads/b8f7c630-d481-49d7-8fb9-f875ce0771c7.png"
+    
+  // },
   {
     id: 4,
     title: "Code-A-Hunt Participation",
     issuer: "Coding Block",
     date: "2024",
     image: "🎯",
-    description: "Competitive programming and algorithm challenges"
+    description: "Competitive programming and algorithm challenges",
+    certificateImage: "/uploads/codeahunt.png"
   },
   {
     id: 5,
@@ -57,16 +60,54 @@ const certificates: Certificate[] = [
     issuer: "IIT Kanpur",
     date: "2024",
     image: "🔐",
-    description: "Cybersecurity capture the flag competition participation"
+    description: "Cybersecurity capture the flag competition participation",
+    certificateImage: "/uploads/iitk.png"
   },
   {
     id: 6,
-    title: "RGCSM Internship",
-    issuer: "Rajeev Gandhi Computer Saksharta Mission",
+    title: "Traninig on EBSCO eBooks/ECM",
+    issuer: "EBSCO Information Services",
+    date: "2024",
+    image: "📚",
+    description: "Training on EBSCO eBooks and ECM platform",
+    certificateImage: "/uploads/ebsco.png"
+  },
+   {
+    id: 7,
+    title: "DevOps Web-delopment bootcamp",
+    issuer: "Aws Community Builder",
     date: "2024",
     image: "🎓",
-    description: "Algorithm development and debugging expertise certification"
-  }
+    description: " Comprehensive 7 days bootcamp on DevOps and web development",
+    certificateImage: "/uploads/awswebdev.png"
+  },
+   {
+    id: 8 ,
+    title: "Foundation of Cyber Security",
+    issuer: "Coursera",
+    date: "2024",
+    image: "👾",
+    description: " Foundational course on Cyber Security principles and practices by Google",
+    certificateImage: "/uploads/courgoo.png"
+  },
+   {
+    id: 9,
+    title: "DevOps Web-delopment bootcamp",
+    issuer: "DevTown",
+    date: "2023",
+    image: "👩🏻‍💻",
+    description: " Comprehensive bootcamp on DevOps and web development by DevTown",
+    certificateImage: "/uploads/msme.png"
+  },
+  //  {
+  //   id: 10,
+  //   title: "",
+  //   issuer: "",
+  //   date: "2024",
+  //   image: "🎓",
+  //   description: "",
+  //   certificateImage: "/uploads/.png"
+  // },
 ];
 
 const FloatingCertificate = ({ 
@@ -156,7 +197,8 @@ const CertificatesSection = () => {
 
   return (
     <section id="certificates" className="py-20 px-6 relative overflow-hidden">
-      <Computer3D />
+      
+      {/* <Computer3D /> */}
       
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -174,17 +216,7 @@ const CertificatesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* 3D Gallery */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="h-[500px] relative"
-          >
-            <div className="absolute inset-0 holographic rounded-2xl" />
-            <CertificatesGallery selectedCertId={selectedCert.id} />
-          </motion.div>
+        <div className="grid grid-cols-1 gap-12 items-center">
 
           {/* Certificate Details */}
           <motion.div

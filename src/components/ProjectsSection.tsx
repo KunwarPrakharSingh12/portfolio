@@ -1,7 +1,8 @@
 
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Github, Link as LinkIcon, Code } from 'lucide-react';
+import { SiGithub } from 'react-icons/si';
+import { Link as LinkIcon, Code } from 'lucide-react';
 
 const ProjectsSection = () => {
   const ref = useRef(null);
@@ -11,11 +12,11 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: 'Banking Management System (BMS)',
-      description: 'A comprehensive banking solution enabling account creation and management for savings, checking, and fixed deposit accounts. Features secure fund transfers through NEFT, RTGS, IMPS, and UPI integration.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
-      tech: ['Java', 'DBMS', 'SQL', 'OOP'],
-      github: 'https://github.com/kunwarprakharsingh',
+      title: 'Health Care System',
+      description: 'A comprehensive health care management platform enabling patient registration, appointment scheduling, and medical record management. Features secure access for doctors and patients, prescription management, and telemedicine integration.',
+      image: 'https://media.geeksforgeeks.org/wp-content/uploads/20240229162347/Hospital-Management-System.webp',
+      tech: ['DBMS', 'SQL', 'PHP', 'REACT'],
+      github: 'https://github.com/KunwarPrakharSingh12/constitution-quest-online.git',
       demo: 'https://linktr.ee/kunwar_prakhar_singh',
       featured: true,
     },
@@ -23,33 +24,33 @@ const ProjectsSection = () => {
       id: 2,
       title: 'Dhanvantri-Vatika: Virtual Herbal Garden',
       description: 'An immersive web-based educational platform showcasing Ayurvedic and AYUSH medicinal plants. Offers interactive 2D/3D experiences with comprehensive herbal garden environments.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-      tech: ['HTML', 'CSS', 'JavaScript', '3D Graphics'],
-      github: 'https://github.com/kunwarprakharsingh',
+      image: 'https://imgs.search.brave.com/N6vP2KbXl0g4hxuZ_FWhm9woqi9D0Ut2a1pYpI5oZa4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAwLzQ0LzQ2LzI2/LzM2MF9GXzQ0NDYy/NjUyX3VJRUFZc0Jk/dkJBZjA3SzhTZmZ2/UldtbGtxd1NZOE9J/LmpwZw',
+      tech: ['REACT', '3D JS', 'WebGL', 'TypeScript', 'WebXR'],
+      github: 'https://github.com/kunwarprakharsingh12',
       demo: 'https://linktr.ee/kunwar_prakhar_singh',
       featured: true,
     },
     {
       id: 3,
-      title: 'Algorithm Debugging Solutions',
-      description: 'Collection of efficient algorithms and debugging solutions developed during internship at Rajeev Gandhi Computer Saksharta Mission. Focused on C programming optimization.',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop',
-      tech: ['C', 'GDB', 'Algorithms', 'Debugging'],
-      github: 'https://github.com/kunwarprakharsingh',
+      title: 'Sign-To-Text (vice-versa) Language Converter',
+      description: 'A Python-based application that converts sign language gestures to text and vice versa using computer vision and natural language processing libraries such as OpenCV and TensorFlow. Enables real-time communication between hearing and speech-impaired individuals and others.',
+      image: 'https://miro.medium.com/v2/resize:fit:1200/1*tpsXWn-xbmRLTzXG6TiomQ.png',
+      tech: ['Python', 'OpenCV', 'TensorFlow', 'NLP'],
+      github: 'https://github.com/kunwarprakharsingh12',
       demo: 'https://linktr.ee/kunwar_prakhar_singh',
       featured: false,
     },
     {
       id: 4,
-      title: 'Portfolio Website',
-      description: 'Modern, responsive portfolio website built with React and Tailwind CSS featuring cyberpunk aesthetics and 3D elements. Showcasing professional development skills.',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
+      title: 'Gamified Learning Platform for constitutional knowledge',
+      description: 'A gamified learning platform that motivates users through interactive challenges, rewards, and progress tracking. Built with React and Tailwind CSS, it features engaging UI, real-time feedback, and a modular lesson system to enhance the educational experience.',
+      image: 'https://blog.efmdglobal.org/wp-content/uploads/2021/09/iStock-1309704632.jpg',
       tech: ['React', 'Tailwind CSS', 'Three.js', 'TypeScript'],
       github: 'https://github.com/kunwarprakharsingh',
       demo: 'https://linktr.ee/kunwar_prakhar_singh',
       featured: false,
     },
-  ];
+    ];
 
   const ProjectCard = ({ project, index }: { project: typeof projects[0], index: number }) => {
     return (
@@ -59,12 +60,10 @@ const ProjectsSection = () => {
         transition={{ duration: 0.6, delay: index * 0.1 }}
         onHoverStart={() => setHoveredProject(project.id)}
         onHoverEnd={() => setHoveredProject(null)}
-        className={`group relative cyber-card overflow-hidden ${
-          project.featured ? 'lg:col-span-2' : ''
-        }`}
+      className="group relative cyber-card overflow-hidden"
       >
         {/* Background Image */}
-        <div className="aspect-video overflow-hidden">
+        <div className="aspect-[4/3] overflow-hidden">
           <motion.img
             src={project.image}
             alt={project.title}
@@ -106,21 +105,29 @@ const ProjectsSection = () => {
             <div className="flex space-x-4">
               <motion.a
                 href={project.github}
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open(project.github, '_blank', 'noopener,noreferrer');
+                }}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileHover={{ scale: 1.1, rotate: 5, boxShadow: "0 0 10px #8b5cf6" }}
                 whileTap={{ scale: 0.9 }}
-                className="p-2 bg-cyber-glass backdrop-blur-sm border border-white/10 rounded-lg hover:border-neon-purple/50 transition-colors"
+                className="p-2 bg-cyber-glass backdrop-blur-sm border border-white/10 rounded-lg hover:border-neon-purple/50 transition-colors pointer-events-auto"
               >
-                <Github size={20} className="text-white hover:text-neon-purple transition-colors" />
+                <SiGithub size={20} className="text-white hover:text-neon-purple transition-colors" />
               </motion.a>
               <motion.a
                 href={project.demo}
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open(project.demo, '_blank', 'noopener,noreferrer');
+                }}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, rotate: -5 }}
+                whileHover={{ scale: 1.1, rotate: -5, boxShadow: "0 0 10px #3b82f6" }}
                 whileTap={{ scale: 0.9 }}
-                className="p-2 bg-cyber-glass backdrop-blur-sm border border-white/10 rounded-lg hover:border-neon-blue/50 transition-colors"
+                className="p-2 bg-cyber-glass backdrop-blur-sm border border-white/10 rounded-lg hover:border-neon-blue/50 transition-colors pointer-events-auto"
               >
                 <LinkIcon size={20} className="text-white hover:text-neon-blue transition-colors" />
               </motion.a>
@@ -155,12 +162,12 @@ const ProjectsSection = () => {
             <span className="text-white">Projects</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Showcasing innovative solutions in web development, banking systems, and educational platforms
+            Showcasing innovative solutions and creative projects that demonstrate my skills in software development, web design, and problem-solving.
           </p>
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
@@ -176,7 +183,7 @@ const ProjectsSection = () => {
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(14, 165, 233, 0.5)" }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => window.open('https://github.com/kunwarprakharsingh', '_blank')}
+            onClick={() => window.open('https://github.com/kunwarprakharsingh12', '_blank')}
             className="px-8 py-4 border border-neon-blue text-neon-blue font-semibold rounded-lg hover:bg-neon-blue hover:text-white transition-all flex items-center space-x-2 mx-auto"
           >
             <Code size={20} />

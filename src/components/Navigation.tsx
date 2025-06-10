@@ -1,10 +1,12 @@
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -43,6 +45,11 @@ const Navigation = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMobileMenuOpen(false); // Close mobile menu after navigation
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -67,10 +74,10 @@ const Navigation = () => {
               whileHover={{ scale: 1.05 }}
               className="text-2xl font-bold neon-text text-neon-purple"
             >
-              &lt;DEV/&gt;
+              &lt;KPS/&gt;
             </motion.div>
 
-            {/* Navigation Items */}
+            {/* Desktop Navigation Items */}
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
                 <motion.button
@@ -99,6 +106,7 @@ const Navigation = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={toggleMobileMenu}
               className="md:hidden p-2 text-white hover:text-neon-purple transition-colors"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -108,6 +116,83 @@ const Navigation = () => {
           </div>
         </div>
       </motion.nav>
+
+      {/* Mobile Menu Panel */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+
+            {/* Mobile Menu Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="fixed top-0 right-0 h-full w-80 bg-cyber-dark/95 backdrop-blur-xl border-l border-white/10 z-50 md:hidden"
+            >
+              <div className="p-6">
+                {/* Close Button */}
+                <div className="flex justify-end mb-8">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="p-2 text-white hover:text-neon-purple transition-colors"
+                  >
+                    <X size={24} />
+                  </motion.button>
+                </div>
+
+                {/* Mobile Navigation Items */}
+                <div className="space-y-6">
+                  {navItems.map((item, index) => (
+                    <motion.button
+                      key={item.id}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      onClick={() => scrollToSection(item.id)}
+                      className={`block w-full text-left px-4 py-3 text-lg font-medium transition-colors rounded-lg ${
+                        activeSection === item.id
+                          ? 'text-neon-purple neon-text bg-neon-purple/10'
+                          : 'text-gray-300 hover:text-white hover:bg-white/5'
+                      }`}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      {item.label}
+                    </motion.button>
+                  ))}
+                </div>
+
+                {/* Mobile Menu Footer */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="absolute bottom-6 left-6 right-6"
+                >
+                  <div className="text-center text-sm text-gray-400">
+                    <div className="text-lg font-bold neon-text text-neon-purple mb-2">
+                      &lt;KPS/&gt;
+                    </div>
+                    <p>Kunwar Prakhar Singh</p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };
