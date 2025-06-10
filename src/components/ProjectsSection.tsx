@@ -184,6 +184,7 @@ const ProjectsSection = () => {
             whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(14, 165, 233, 0.5)" }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.open('https://github.com/kunwarprakharsingh12', '_blank')}
+
             className="px-8 py-4 border border-neon-blue text-neon-blue font-semibold rounded-lg hover:bg-neon-blue hover:text-white transition-all flex items-center space-x-2 mx-auto"
           >
             <Code size={20} />
